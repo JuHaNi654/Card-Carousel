@@ -1,16 +1,9 @@
-const selectedType = document.querySelector(".carousel").dataset.type
-const rotatingTime = document.querySelector(".carousel").dataset.time
-let timer = null
-
-
-
 class CarouselAnimation {
     constructor({ elem, size }) {
         this.carousel = elem
         this.size = size
         this.cards = this.carousel.querySelectorAll(".card")
         this.listedStyleNames = []
-
 
         // Binding functions
         this.init = this.init.bind(this)
@@ -41,8 +34,9 @@ class CarouselAnimation {
     }
 
     setSelectedStyleClass(elemIndex, className) {
-        if (document.querySelector(`.${className}`) !== null) {
-            document.querySelector(`.${className}`).classList.remove(className)
+        let selectedElem = this.carousel.querySelector(`.${className}`)
+        if (selectedElem !== null) {
+            selectedElem.classList.remove(className)
         }
         this.cards[elemIndex].classList.add(className)
     }
@@ -75,30 +69,19 @@ class CarouselAnimation {
     }
 }
 
+const carouselObj = []
+let carouselList = document.querySelectorAll(".carousel")
 
-const carousel = new CarouselAnimation({
-    elem: document.querySelector(".carousel"),
-    size: selectedType
-})
 
-function startOnLoad() {
-    timer = setInterval(moveNext, rotatingTime)
+for (let i = 0; i < carouselList.length; i++) {
+    let newCarousel = new CarouselAnimation({
+        elem: document.getElementById(`${carouselList[i].id}`),
+        size: document.getElementById(`${carouselList[i].id}`).dataset.type
+    })
+    carouselObj.push(newCarousel)
+    $(`#${carouselList[i].id} .card`).click(function () {
+        carouselObj[i].setCardStyle($(this))
+    })
 }
 
-
-$('.card').click(function () {
-    carousel.setCardStyle(this)
-
-});
-
-function moveNext() {
-    let nextCard = document.querySelector(".next")
-    carousel.setCardStyle(nextCard)
-}
-
-$(".carousel").hover(function () {
-    clearInterval(timer)
-}, function () {
-    startOnLoad()
-})
 
