@@ -1,0 +1,36 @@
+@import "utility";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main {
+  margin: auto;
+  text-align: center;
+}
+.container {
+  width: 60%;
+  margin: 10px auto;
+  border: 1px solid black;
+}
+.carousel {
+  width: 100%;
+  position: relative;
+  height: 400px;
+  background: lightblue;
+  .card {
+    background: green;
+    border: 3px solid gainsboro;
+    border-radius: 10px;
+    position: absolute;
+    left: 80%;
+    top: 18%;
+    opacity: 0;
+    height: 275px;
+    width: 175px;
+    cursor: pointer;
+    transform: perspective(100rem);
+  }
+  @import "cardPosStyle";
+}

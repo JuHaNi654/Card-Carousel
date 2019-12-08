@@ -1,0 +1,46 @@
+.selected,
+.next,
+.prev,
+.fadeNext,
+.fadePrev {
+  transition: 1s;
+}
+.selected {
+  height: 350px;
+  width: 250px;
+  z-index: 10;
+  opacity: 1;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+.next,
+.prev {
+  height: 300px;
+  width: 200px;
+  opacity: 1;
+  z-index: 5;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+.fadeNext,
+.fadePrev {
+  height: 275px;
+  width: 175px;
+  opacity: 0.5;
+  z-index: 3;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+.next {
+  left: 65%;
+}
+.prev {
+  left: 35%;
+}
+.fadeNext {
+  left: 77.5%;
+}
+.fadePrev {
+  left: 22.5%;
+}
