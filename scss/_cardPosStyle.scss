@@ -4,6 +4,8 @@
 .fadeNext,
 .fadePrev {
   transition: 1s;
+  display: block;
+  cursor: pointer;
 }
 .selected {
   height: 350px;
